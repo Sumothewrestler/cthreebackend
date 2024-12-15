@@ -63,17 +63,15 @@ TEMPLATES = [
 WSGI_APPLICATION = "myproject.wsgi.application"
 
 # Database configuration
-if os.getenv('DATABASE_URL'):
-    # Production database
+if os.getenv('RENDER') == 'true':  # Explicitly check for Render environment
     DATABASES = {
         'default': dj_database_url.config(
-            default=os.getenv('DATABASE_URL'),
             conn_max_age=600,
             conn_health_checks=True,
+            ssl_require=True,  # Add SSL requirement for production
         )
     }
 else:
-    # Local database
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
