@@ -115,7 +115,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS Settings
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,https://cthree-hs19cnikb-sumothewrestlers-projects.vercel.app').split(',')
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,https://cthree-oa5e8k9ie-sumothewrestlers-projects.vercel.app').split(',')
 CORS_ORIGIN_ALLOW_ALL = DEBUG  # Only True in development
 
 # Static files settings
