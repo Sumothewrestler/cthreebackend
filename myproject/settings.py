@@ -123,6 +123,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
+os.makedirs(os.path.join(BASE_DIR, 'static'), exist_ok=True)
+
 # Security settings for production
 if not DEBUG:
     SECURE_SSL_REDIRECT = True
