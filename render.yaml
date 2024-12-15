@@ -7,8 +7,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: RENDER
-        value: true
       - key: DATABASE_URL
         fromDatabase:
           name: cthreedb
@@ -21,12 +19,10 @@ services:
         value: cthreebackend.onrender.com
       - key: CORS_ALLOWED_ORIGINS
         value: https://cthree.vercel.app
-      - key: DJANGO_SETTINGS_MODULE  # Add this
-        value: myproject.settings
-      - key: PORT  # Add this
-        value: 8000
 
 databases:
   - name: cthreedb
+    databaseName: cthreedb
+    user: cthreeuser
     plan: free
     region: singapore

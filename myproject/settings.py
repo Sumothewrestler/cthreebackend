@@ -63,13 +63,11 @@ TEMPLATES = [
 WSGI_APPLICATION = "myproject.wsgi.application"
 
 # Database configuration
-if os.getenv('RENDER') == 'true':  # Explicitly check for Render environment
+DATABASE_URL = os.getenv('DATABASE_URL')
+
+if DATABASE_URL:
     DATABASES = {
-        'default': dj_database_url.config(
-            conn_max_age=600,
-            conn_health_checks=True,
-            ssl_require=True,  # Add SSL requirement for production
-        )
+        'default': dj_database_url.parse(DATABASE_URL, conn_max_age=600)
     }
 else:
     DATABASES = {
@@ -117,7 +115,7 @@ REST_FRAMEWORK = {
 }
 
 # CORS Settings
-CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,https://cthree.vercel.app').split(',')
+CORS_ALLOWED_ORIGINS = os.getenv('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,https://cthree-hs19cnikb-sumothewrestlers-projects.vercel.app').split(',')
 CORS_ORIGIN_ALLOW_ALL = DEBUG  # Only True in development
 
 # Static files settings
